@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useMemo, useState } from "react";
 import Header from "./components/header";
 import Filter from "./components/filter";
@@ -9,6 +10,7 @@ import { CustomerType } from "./components/charts/custormer-type";
 import { CancellationRate } from "./components/charts/cancellation-rate";
 import { TopTenCountries } from "./components/charts/top-ten-countries";
 import { Loading } from "./components/loading";
+import hotelDataset from "./components/data/hotel_bookings_clean.json";
 
 function App() {
   const [rawData, setRawData] = useState([]);
@@ -18,15 +20,20 @@ function App() {
   const [endMonth, setEndMonth] = useState(12);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   fetch("/public/data/hotel_bookings_clean.json")
+  //     // fetch("/data/hotel_bookings_clean.json") // correct path
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRawData(data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, []);
+
   useEffect(() => {
-    // fetch("/public/data/hotel_bookings_clean.json")
-    fetch("/data/hotel_bookings_clean.json") // correct path
-      .then((res) => res.json())
-      .then((data) => {
-        setRawData(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+    setRawData(hotelDataset);
+    setLoading(false);
   }, []);
 
   const hotelData = useMemo(() => {
