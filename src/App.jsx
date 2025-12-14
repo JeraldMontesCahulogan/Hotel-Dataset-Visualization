@@ -19,7 +19,8 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/public/data/hotel_bookings_clean.json")
+    // fetch("/public/data/hotel_bookings_clean.json")
+    fetch("/data/hotel_bookings_clean.json") // correct path
       .then((res) => res.json())
       .then((data) => {
         setRawData(data);
