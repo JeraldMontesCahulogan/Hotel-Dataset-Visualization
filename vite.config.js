@@ -12,5 +12,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // increase limit to 1000 KB
+  },
   base: process.env.VITE_BASE_PATH || "/Hotel-Dataset-Visualization",
 });
